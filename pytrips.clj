@@ -9,9 +9,7 @@
         (fn [f]
           (fn [a b c]
             (when (< a n)
-              (if (and
-                    (= (+ a b c) n)
-                    (and (and (< a b) (< b c)) (= (+ (* a a) (* b b)) (* c c))))
+              (if (and (= (+ a b c) n) (= (+ (* a a) (* b b)) (* c c)))
                 [a b c]
                 (let [[a b c]
                         (if (< c n)

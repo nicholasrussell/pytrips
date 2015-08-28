@@ -1,4 +1,6 @@
 (defn pytrips [t]
+  "Returns the three numbers of a Pythagorean triple which add up to t
+  (pytrips 1000) -> [375 200 425]"
   (let 
     [[a b c]
         (((fn [f]
@@ -18,7 +20,10 @@
                     (if (< n (- m 1))
                       (recur (+ n 1) m)
                       (recur 1 (+ m 1))))))))) 1 2)]
-    (println a "*" b "*" c "=" (* a b c))
-    (* a b c)))
+    [a b c]))
 
-(pytrips 1000)
+(let
+  [[a b c] (pytrips 1000)
+   p (* a b c)]
+  (println a "*" b "*" c "=" p)
+  p)

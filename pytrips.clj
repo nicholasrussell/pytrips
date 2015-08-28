@@ -1,5 +1,5 @@
 (defn pytrips [t]
-  "Returns the three numbers of a Pythagorean triple which add up to t
+  "Finds a primitive Pythagorean triple (a, b, c) whose numbers add up to t
   (pytrips 1000) -> [375 200 425]
   Note that this uses an algorithm that will only find primitive Pythagorean triples
   Also note that the fixed-point combinator was just 'for funsies'"
@@ -21,8 +21,7 @@
                  (recur (+ n 1) m)
                  (recur 1 (+ m 1))))))))) 1 2))
 
-(let
-  [[a b c] (pytrips 1000)
-   p (* a b c)]
+(let [[a b c] (pytrips 1000)
+      p (* a b c)]
   (println a "*" b "*" c "=" p)
   p)

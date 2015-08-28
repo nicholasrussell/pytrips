@@ -10,8 +10,7 @@
           (f (fn [& y] (apply (x x) y))))))
      (fn [f]
        (fn [n m]
-         (if (> m t)
-           [0 0 0]
+         (when (<= m t)
            (let [a (- (* m m) (* n n))
                  b (* 2 m n)
                  c (+ (* m m) (* n n))]
@@ -21,7 +20,7 @@
                  (recur (+ n 1) m)
                  (recur 1 (+ m 1))))))))) 1 2))
 
-(let [[a b c] (pytrips 1000)
-      p (* a b c)]
-  (println a "*" b "*" c "=" p)
-  p)
+(let [pytrip (pytrips 1000)
+      product (if (nil? pytrip) nil (reduce * pytrip))]
+  (when (not (nil? product)) (println (first pytrip) "*" (second pytrip) "*" (nth pytrip 2) "=" product))
+  product)

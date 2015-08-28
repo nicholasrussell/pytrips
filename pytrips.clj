@@ -1,6 +1,8 @@
 (defn pytrips [t]
   "Returns the three numbers of a Pythagorean triple which add up to t
-  (pytrips 1000) -> [375 200 425]"
+  (pytrips 1000) -> [375 200 425]
+  Note that this uses an algorithm that will only find primitive Pythagorean triples
+  Also note that the fixed-point combinator was just 'for funsies'"
   (((fn [f]
       ((fn [x]
          (f (fn [& y] (apply (x x) y))))
